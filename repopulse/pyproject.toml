@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "repopulse"
+version = "0.1.0"
+description = "CLI tool that analyzes a GitHub repository's engineering-health metrics: commit frequency, top contributors, PR merge time, issue resolution time, and language breakdown."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Kishore M" }]
+dependencies = [
+    "requests>=2.31",
+    "pandas>=2.0",
+    "openpyxl>=3.1",
+    "matplotlib>=3.8",
+    "python-dotenv>=1.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "pytest-cov>=5.0", "ruff>=0.5"]
+
+[project.scripts]
+repopulse = "repopulse.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 110
